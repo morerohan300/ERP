@@ -1,0 +1,73 @@
+{
+    "name": "CRM",
+    "key": "crm",
+    "label": "CRM",
+    "description": "Leads, contacts and accounts, deal pipeline, activities, email, campaigns, support tickets with SLA and a customer portal.",
+    "version": "1.0.0",
+    "core": false,
+    "enabled_by_default": true,
+    "order": 10,
+    "icon": "users",
+    "dependencies": [],
+    "permissions": {
+        "dashboard": ["view"],
+        "lead": ["view", "create", "edit", "delete", "export", "import", "convert"],
+        "contact": ["view", "create", "edit", "delete", "export", "import"],
+        "account": ["view", "create", "edit", "delete", "export", "import"],
+        "deal": ["view", "create", "edit", "delete", "export"],
+        "pipeline": ["view", "create", "edit", "delete"],
+        "activity": ["view", "create", "edit", "delete"],
+        "email_template": ["view", "create", "edit", "delete"],
+        "email": ["send"],
+        "segment": ["view", "create", "edit", "delete"],
+        "campaign": ["view", "create", "edit", "delete", "send"],
+        "ticket": ["view", "create", "edit", "delete", "export"],
+        "sla_policy": ["view", "create", "edit", "delete"],
+        "settings": ["view", "edit"],
+        "portal": ["manage"]
+    },
+    "menu": [
+        {
+            "label": "CRM",
+            "icon": "users",
+            "section": "main",
+            "children": [
+                { "label": "CRM Dashboard", "route": "crm.dashboard", "permission": "crm.dashboard.view" },
+                { "label": "Leads", "route": "crm.leads.index", "permission": "crm.lead.view" },
+                { "label": "Contacts", "route": "crm.contacts.index", "permission": "crm.contact.view" },
+                { "label": "Accounts", "route": "crm.accounts.index", "permission": "crm.account.view" },
+                { "label": "Deals", "route": "crm.deals.index", "permission": "crm.deal.view" },
+                { "label": "Activities", "route": "crm.activities.index", "permission": "crm.activity.view" },
+                { "label": "Calendar", "route": "crm.calendar", "permission": "crm.activity.view" }
+            ]
+        },
+        {
+            "label": "Support",
+            "icon": "lifebuoy",
+            "section": "main",
+            "children": [
+                { "label": "Tickets", "route": "crm.tickets.index", "permission": "crm.ticket.view" },
+                { "label": "SLA Policies", "route": "crm.sla-policies.index", "permission": "crm.sla_policy.view" }
+            ]
+        },
+        {
+            "label": "Marketing",
+            "icon": "megaphone",
+            "section": "main",
+            "children": [
+                { "label": "Campaigns", "route": "crm.campaigns.index", "permission": "crm.campaign.view" },
+                { "label": "Segments", "route": "crm.segments.index", "permission": "crm.segment.view" },
+                { "label": "Email Templates", "route": "crm.email-templates.index", "permission": "crm.email_template.view" }
+            ]
+        },
+        {
+            "label": "CRM Setup",
+            "icon": "cog",
+            "section": "admin",
+            "children": [
+                { "label": "Pipelines", "route": "crm.pipelines.index", "permission": "crm.pipeline.view" },
+                { "label": "Lead Setup", "route": "crm.lead-setup.index", "permission": "crm.settings.view" }
+            ]
+        }
+    ]
+}

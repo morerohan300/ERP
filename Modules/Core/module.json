@@ -1,0 +1,92 @@
+{
+    "name": "Core",
+    "key": "core",
+    "label": "Administration",
+    "description": "Companies, branches, users, roles, settings, approvals, audit log and system tools.",
+    "version": "1.0.0",
+    "core": true,
+    "enabled_by_default": true,
+    "order": 1,
+    "icon": "cog",
+    "dependencies": [],
+    "permissions": {
+        "company": ["view", "edit"],
+        "branch": ["view", "create", "edit", "delete"],
+        "department": ["view", "create", "edit", "delete"],
+        "user": ["view", "create", "edit", "delete", "export", "import"],
+        "role": ["view", "create", "edit", "delete"],
+        "settings": ["view", "edit"],
+        "currency": ["view", "create", "edit", "delete"],
+        "tax": ["view", "create", "edit", "delete"],
+        "fiscal_year": ["view", "create", "edit", "delete"],
+        "numbering": ["view", "edit"],
+        "module": ["view", "edit"],
+        "custom_field": ["view", "create", "edit", "delete"],
+        "approval_workflow": ["view", "create", "edit", "delete"],
+        "approval": ["view", "approve"],
+        "audit_log": ["view", "export"],
+        "backup": ["view", "create", "delete"]
+    },
+    "menu": [
+        {
+            "label": "Dashboard",
+            "route": "dashboard",
+            "icon": "home",
+            "section": "main"
+        },
+        {
+            "label": "Approvals",
+            "route": "approvals.index",
+            "icon": "check-badge",
+            "permission": "core.approval.view",
+            "section": "main"
+        },
+        {
+            "label": "Organization",
+            "icon": "building",
+            "section": "admin",
+            "children": [
+                { "label": "Company Profile", "route": "settings.company", "permission": "core.company.view" },
+                { "label": "Branches", "route": "branches.index", "permission": "core.branch.view" },
+                { "label": "Departments", "route": "departments.index", "permission": "core.department.view" }
+            ]
+        },
+        {
+            "label": "Users & Access",
+            "icon": "users",
+            "section": "admin",
+            "children": [
+                { "label": "Users", "route": "users.index", "permission": "core.user.view" },
+                { "label": "Roles & Permissions", "route": "roles.index", "permission": "core.role.view" },
+                { "label": "Login History", "route": "login-history.index", "permission": "core.audit_log.view" }
+            ]
+        },
+        {
+            "label": "Settings",
+            "icon": "cog",
+            "section": "admin",
+            "children": [
+                { "label": "General", "route": "settings.general", "permission": "core.settings.view" },
+                { "label": "Currencies", "route": "currencies.index", "permission": "core.currency.view" },
+                { "label": "Taxes", "route": "taxes.index", "permission": "core.tax.view" },
+                { "label": "Fiscal Years", "route": "fiscal-years.index", "permission": "core.fiscal_year.view" },
+                { "label": "Document Numbering", "route": "numbering.index", "permission": "core.numbering.view" },
+                { "label": "Modules", "route": "modules.index", "permission": "core.module.view" },
+                { "label": "Custom Fields", "route": "custom-fields.index", "permission": "core.custom_field.view" },
+                { "label": "Approval Workflows", "route": "approval-workflows.index", "permission": "core.approval_workflow.view" },
+                { "label": "Email & SMS", "route": "settings.communication", "permission": "core.settings.view" },
+                { "label": "Payment Gateways", "route": "settings.payments", "permission": "core.settings.view" }
+            ]
+        },
+        {
+            "label": "System",
+            "icon": "server",
+            "section": "admin",
+            "children": [
+                { "label": "Audit Log", "route": "audit-log.index", "permission": "core.audit_log.view" },
+                { "label": "Import / Export", "route": "data-transfers.index", "permission": "core.user.import" },
+                { "label": "Backups", "route": "backups.index", "permission": "core.backup.view" }
+            ]
+        }
+    ]
+}
